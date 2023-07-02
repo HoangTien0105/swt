@@ -6,7 +6,6 @@
 package controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -50,13 +49,13 @@ public class LogInServlet extends HttpServlet {
             }else{
                 int roleID = user.getRoleID();
                 HttpSession session = request.getSession();
-                if(roleID == 0){
+                if(roleID==0){
                     url = HR_MANAGER_PAGE;
                     session.setAttribute("LOGIN_USER", user);
-                } else if (roleID == 1){
+                } else if (roleID==1){
                     url = HR_STAFF_PAGE;
                     session.setAttribute("LOGIN_USER", user);
-                } else if (roleID == 2){
+                } else if (roleID==2){
                     url = STAFF_PAGE;
                     session.setAttribute("LOGIN_USER", user);
                 } else {

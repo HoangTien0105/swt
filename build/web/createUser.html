@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Create New User</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <h2>Create new user</h2>
+        <form action="DispatchServlet" method="POST">
+            UserID <input type="text" name="txtUserID" value="" /> <br>
+            Username <input type="text" name="txtUsername" value="" /> <br>
+            Fullname <input type="text" name="txtFullname" value="" /> <br>
+            Password <input type="password" name="txtPassword" value="" /> <br>
+            Confirm Password <input type="password" name="txtConfirm" value="" /> <br>
+            PhoneNumber <input type="text" name="txtPhoneNumber" value="" /> <br>
+            DateOfBirth <input type="date" name="dateOfBirth" value="" /> <br>
+            RoleID <input type="number" min="0" max="2" name="roleID" value="" /> <br>
+            <input type="submit" value="CreateUser" name="action" />
+            <input type="reset" value="Reset" />
+        </form>
+    </body>
+</html>

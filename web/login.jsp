@@ -17,7 +17,7 @@
             Username <input type="text" name="txtUsername" value="" /> </br>
             Password <input type="password" name="txtPassword" value="" /> </br>
             <input type="submit" value="LogIn" name="action" />
-            <input type="reset" value="reset" />
+            <input type="reset" value="Reset" />
         </form>
         <%
             String error = (String) request.getAttribute("ERROR");

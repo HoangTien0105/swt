@@ -14,12 +14,17 @@
     </head>
     <body>
         <%
-            UserDTO loginuser = (UserDTO)session.getAttribute("LOGIN_USER");
-            if(loginuser==null || loginuser.getRoleID()!=2){
+            UserDTO loginuser = (UserDTO) session.getAttribute("LOGIN_USER");
+            if (loginuser == null || loginuser.getRoleID() != 2) {
                 response.sendRedirect("login.html");
                 return;
             }
         %>
-        Fullname: <%=loginuser.getFullname()%>
+        Fullname: <%=loginuser.getFullname()%> </br>
+
+        <form action="DispatchServlet">
+            <input type="submit" value="ViewInfo" name="action" /> </br>
+            <input type="submit" value="Report" name="action" />
+        </form>
     </body>
 </html>
