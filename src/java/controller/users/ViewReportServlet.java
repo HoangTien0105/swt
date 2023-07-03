@@ -7,7 +7,7 @@ package controller.users;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.SQLException;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -15,17 +15,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import report.ReportDAO;
 import report.ReportDTO;
-import report.ReportError;
 
 /**
  *
  * @author nguyenhuuphuoc
  */
-@WebServlet(name = "CreateNewFormServlet", urlPatterns = {"/CreateNewFormServlet"})
-public class CreateNewFormServlet extends HttpServlet {
-
-    private String ERROR_PAGE = "Report.jsp";
-    private String STAFF_PAGE = "staff.jsp";
+@WebServlet(name = "ViewReportServlet", urlPatterns = {"/ViewReportServlet"})
+public class ViewReportServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -39,50 +35,12 @@ public class CreateNewFormServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        PrintWriter out = response.getWriter();
-        String reportid = request.getParameter("txtreportID");
-        String reportname = request.getParameter("txtreportName");
-        String content = request.getParameter("txtcontent");
-        String userid = request.getParameter("txtuserID");
-        boolean foundErr = false;
-        ReportError errors = new ReportError();
-        String url = ERROR_PAGE;
-        try {
-            if (reportid.trim().length() < 2 || reportid.trim().length() > 20) {
-                foundErr = true;
-                errors.setReportIDLengthErr("ReportID is required 2 - 20 characters");
-            }
-            if (reportname.trim().length() < 2 || reportname.trim().length() > 30) {
-                foundErr = true;
-                errors.setReportNameLengthErr("ReportName is requied 2 to 30 characters");
-            }
-            if (content.trim().length() < 2) {
-                foundErr = true;
-                errors.setContentLengthErr("Content is required more than 2 characters");
-            }
-            if (userid.trim().length() < 3 || userid.trim().length() > 10) {
-                foundErr = true;
-                errors.setUserIDLengthErr("UserID is requied 3 to 10 characters");
-            }
-            if (foundErr) {
-                //1.1 store errors object attribute
-                request.setAttribute("CREATE_ERROR", errors);
-                //1.2 pass to error page to show
-            } else {
-                ReportDAO dao = new ReportDAO();
-                ReportDTO dto = new ReportDTO(reportid, reportname, content, userid);
-                boolean result = dao.createNewForm(dto);
-                if (result) {
-                    url = STAFF_PAGE;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            log("CreateNewForm - ClassNotFound" + ex.getMessage());
-        } catch (SQLException ex) {
-            log("CreateNewForm  - SQLException" + ex.getMessage());
-        } finally {
-            request.getRequestDispatcher(url).forward(request, response);
-            out.close();
+        try (PrintWriter out = response.getWriter()) {
+            ArrayList<ReportDTO> list = ReportDAO.getReports();
+            request.setAttribute("accountList", list);
+            request.getRequestDispatcher("ViewReport.jsp").forward(request, response);
+        } catch (Exception ex) {
+            ex.printStackTrace();
         }
     }
 

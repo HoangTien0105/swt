@@ -56,6 +56,9 @@ public class DispatchServlet extends HttpServlet {
     private static final String CREATE_FORM = "CreateNewForm";
     private static final String CREATENEWFORM_PAGE = "CreateNewFormServlet";
 
+    private static final String VIEW_REPORT = "ViewReport";
+    private static final String VIEWREPORT_PAGE = "ViewReportServlet";
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -99,6 +102,8 @@ public class DispatchServlet extends HttpServlet {
                 url = REPORT_PAGE;
             } else if (CREATE_FORM.equals(action)) {
                 url = CREATENEWFORM_PAGE;
+            } else if (VIEW_REPORT.equals(action)) {
+                url = VIEWREPORT_PAGE;
             }
 
         } catch (Exception e) {

@@ -235,17 +235,4 @@ public class UserDAO {
         return list;
     }
 
-    public static void main(String[] args) throws Exception {
-        try {
-            ArrayList<UserDTO> list = UserDAO.getAccounts();
-            for (UserDTO account : list) {
-                System.out.println(account);
-//                System.out.println(account.getUserID() + "," + account.getUsername() + "," + account.getPassword() + ","
-//                        + account.getFullname() + "," + account.getPhoneNumber() + 
-//                        ","  + account.getDateOfBirth() + "," + account.getRoleID());
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
 }
