@@ -25,8 +25,8 @@
         <form action="DispatchServlet">
         <input type="submit" value="Usertable" name="action" /> </br>
         <input type="submit" value="Contract" name="action" /> </br>
-        <input type="submit" value="OTleaves" name="action" /> 
+        <input type="submit" value="Leave" name="action" /> </br>
         </form>
         
-    </body>
+    </body> 
 </html>

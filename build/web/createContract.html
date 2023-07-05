@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Create new contract</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <h2>Create new contract</h2>
+        <form action="DispatchServlet" method="POST">
+            ContractID <input type="number" name="contractID" value="" /> <br>
+            StaffType <input type="text" name="txtStaffType" value="" /> <br>
+            Contract Start Date <input type="date" name="contractStartDate" value="" /> <br>
+            Contract End Date <input type="date" name="contractEndDate" value="" /> <br>
+            Salary <input type="text" name="salary" value="" /> <br>
+            UserID <input type="text" name="userID" value="" /> <br>
+            <input type="submit" value="Create Contract" name="action" />
+            <input type="reset" value="Reset" />
+        </form>
+    </body>
+</html>

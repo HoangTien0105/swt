@@ -25,8 +25,10 @@ public class UserDTO {
         this.Password = " ";
         this.PhoneNumber = " ";
         this.DateOfBirth = Date.valueOf(LocalDate.now());
-        this.RoleID = 0;
+        this.RoleID = 2;
     }
+    
+    
 
     public UserDTO(String UserID, String Username, String Fullname, String Password, String PhoneNumber, Date DateOfBirth, int RoleID) {
         this.UserID = UserID;
